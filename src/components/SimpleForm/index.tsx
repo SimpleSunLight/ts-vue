@@ -292,9 +292,6 @@ export default Form.create({
 			default() {
 				return {}
 			}
-		},
-		wrapperComponentRef: {
-			type: Function,
 		}
 	}
 })(OriginSimpleForm)

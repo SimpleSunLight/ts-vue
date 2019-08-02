@@ -7462,11 +7462,6 @@ vue-class-component@^7.0.1, vue-class-component@^7.0.2:
   resolved "https://registry.npm.taobao.org/vue-class-component/download/vue-class-component-7.1.0.tgz#b33efcb10e17236d684f70b1e96f1946ec793e87"
   integrity sha1-sz78sQ4XI21oT3Cx6W8ZRux5Poc=
 
-vue-draggable-resizable@^2.0.0-rc2:
-  version "2.0.0-rc2"
-  resolved "https://registry.npm.taobao.org/vue-draggable-resizable/download/vue-draggable-resizable-2.0.0-rc2.tgz#492925541eabebeb5b805b2fafb358ff27927d24"
-  integrity sha1-SSklVB6r6+tbgFsvr7NY/yeSfSQ=
-
 vue-hot-reload-api@^2.3.0:
   version "2.3.3"
   resolved "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.3.tgz#2756f46cb3258054c5f4723de8ae7e87302a1ccf"

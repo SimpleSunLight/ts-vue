@@ -7,7 +7,7 @@ function resolve(dir){
 	return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'Vue + Ts Element Admin' // page title
+const name = defaultSettings.title || 'Vue + Ts + Antd' // page title
 
 module.exports = {
 	configureWebpack: {

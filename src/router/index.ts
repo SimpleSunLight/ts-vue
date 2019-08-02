@@ -13,12 +13,12 @@ export default new Router({
 			// route level code-splitting
 			// this generates a separate chunk (about.[hash].js) for this route
 			// which is lazy-loaded when the route is visited.
-			component: () => import(/* webpackChunkName: "about" */ '@/views/table'),
+			component: () => import(/* webpackChunkName: "about" */ '@/views/tree'),
 			children: [
 				{
 					path: 'admin',
 					name: 'admin',
-					component: () => import(/* webpackChunkName: "about" */ '@/views/table'),
+					component: () => import(/* webpackChunkName: "about" */ '@/views/tree/CustomTree'),
 					meta: { key: 'admin' }
 				}
 			]
@@ -35,12 +35,12 @@ export default new Router({
 				{
 					path: 'menuManage',
 					name: 'menuManage',
-					component: () => import(/* webpackChunkName: "about" */ '@/views/form/CustomForm'),
+					component: () => import(/* webpackChunkName: "about" */ '@/views/form/CustomForm/CustomForm'),
 					meta: { key: 'menuManage' }
 				}, {
 					path: 'userManage',
 					name: 'userManage',
-					component: () => import(/* webpackChunkName: "about" */ '@/views/table/customTable'),
+					component: () => import(/* webpackChunkName: "about" */ '@/views/table/CustomTable'),
 					meta: { key: 'userManage' }
 				}
 			]

@@ -1,12 +1,8 @@
 import {
 	Component, Vue
 } from 'vue-property-decorator'
-import VueDraggableResizable from 'vue-draggable-resizable'
 
 @Component({
-	components: {
-		'vue-draggable-resizable': VueDraggableResizable
-	}
 })
 class Login extends Vue {
 	public render() {
