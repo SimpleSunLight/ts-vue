@@ -1,11 +1,12 @@
 import {
-	Component, Vue, Prop, Emit
+	Component, Vue, Prop, Emit, Watch
 } from 'vue-property-decorator'
 import {
 	Badge, Dropdown, Breadcrumb, Popover, Icon, Menu,
 } from 'ant-design-vue'
-import MenuList from '@/layout/Siderbar/MenuList'
 import Cookies from 'js-cookie'
+import { routeToArray } from '@/utils/routeFun'
+import MenuList from '@/layout/Siderbar/MenuList'
 
 import './Header.less'
 
@@ -29,17 +30,96 @@ interface BreadItemIf {
 	}
 })
 class Header extends Vue {
-	public menuData: any[] = []
+	public menuData: any[] = [
+		{
+			name: '权限管理',
+			icon: 'desktop',
+			path: '/root',
+			meta: { key: 'root' },
+			children: [
+				{
+					name: '菜单管理',
+					path: 'menuManage',
+					icon: 'desktop',
+					meta: {  key: 'menuManage' },
+					permission: true,
+					children: []
+				}, {
+					name: '用户管理',
+					path: 'userManage',
+					icon: 'desktop',
+					meta: { key: 'userManage' },
+					permission: true,
+					children: []
+				}
+			]
+		},
+		{
+			name: '图表统计',
+			icon: 'desktop',
+			path: '/total',
+			meta: { key: 'total' },
+			children: [
+				{
+					name: '业务统计',
+					path: 'businessTotal',
+					icon: 'desktop',
+					meta: { key: 'businessTotal' },
+					permission: true,
+					children: []
+				}, {
+					name: '数据统计',
+					path: 'dataTotal',
+					icon: 'desktop',
+					meta: { key: 'dataTotal' },
+					permission: true,
+					children: []
+				}
+			]
+		},
+	]
 	public breadList: any[] = []
 	public onIndex: number = 0
 
 	@Prop() private username!: string
+
+	@Watch('$route',  { immediate: true, deep: true })
+	public routeChange(to: any, from: any) {
+		const toDepth = routeToArray(to.path)
+		this.onIndex = 0
+		this.breadList = []
+		this.routerBread(this.menuData, toDepth.routeArr)
+	}
+
+	@Watch('menuData')
+	public initRouteBread() {
+		const toDepth = routeToArray(this.$route.path);
+		this.routerBread(this.menuData, toDepth.routeArr);
+	}
+
+	@Emit()
+	public routerBread(data: any, toDepth: string[]) {
+		data.map((d: any) => {
+			if (d.path === toDepth[this.onIndex]) {
+				this.breadList.push({
+					url: d.path,
+					text: d.name ? d.name : ''
+				})
+				if (d.children && (toDepth.length - 1) >= this.onIndex) {
+					this.onIndex += 1
+					this.routerBread(d.children, toDepth)
+				}
+			}
+			return true
+		})
+	}
 
 	@Emit()
 	public switchSiderbar(): void {
 		this.$store.dispatch('ToggleSiderbar')
 	}
 
+	@Emit()
 	public menuClick(params: {item: any, key: string, keyPath: string[]}): void {
 		const self = this
 		switch (params.key) {

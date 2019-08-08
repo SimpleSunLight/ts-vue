@@ -132,6 +132,7 @@ class CustomForm extends Vue {
 		}
 	]
 	public visible: boolean = false
+	public visible1: boolean = false
 	@Emit()
 	public treeSelect(value: string, option: any) {
 		console.log('treeSelect', value)
@@ -158,40 +159,33 @@ class CustomForm extends Vue {
 	}
 
 	@Emit()
-	public handleSubmit1(value: any) {
-		console.log('data1', value)
-	}
-
-	@Emit()
 	public showModal(value: any) {
-		this.visible = !this.visible
+		this.visible1 = !this.visible1
 	}
 
 	public render() {
 		const {
-			// data,
-			data1,
-			visible,
-			showModal,
+			data,
+			// data1,
+			// visible,
+			// showModal,
 			handleSubmit,
-			// handleSubmit1
 		} = this
 		return (
 			<div>
-				{/* <a-simpleform
-					layout='inline'
-					fields={data1}
-					handleParentSubmit={handleSubmit1}
-					formStyle={{ height: '60px', background: '#fff', padding: '10.5px 40px 0 40px' }}
-				/> */}
-				<a-simplemodalform
+				<a-simpleform
+					layout='vertical'
+					fields={data}
+					handleParentSubmit={handleSubmit}
+					formStyle={{ background: '#fff' }}
+				/>
+				{/* <a-simplemodalform
 					title='新建菜单'
 					fields={data1}
 					cancel={showModal}
 					visible={visible}
 					ok={handleSubmit}
-				/>
-				<div on-click={this.showModal}>click</div>
+				/> */}
 			</div>
 		)
 	}

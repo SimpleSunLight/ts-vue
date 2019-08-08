@@ -7,54 +7,7 @@ const app = {
 			opened: localStorage.getItem('siderbarStatus')
 		},
 		theme: 'default',
-		menuData: [
-			{
-				name: '权限管理',
-				icon: 'desktop',
-				path: '/root',
-				meta: { key: 'root' },
-				children: [
-					{
-						name: '菜单管理',
-						path: 'menuManage',
-						icon: 'desktop',
-						meta: {  key: 'cc' },
-						permission: true,
-						children: []
-					}, {
-						name: '用户管理',
-						path: 'userManage',
-						icon: 'desktop',
-						meta: { key: 'dd' },
-						permission: true,
-						children: []
-					}
-				]
-			},
-			{
-				name: '图表统计',
-				icon: 'desktop',
-				path: '/total',
-				meta: { key: 'total' },
-				children: [
-					{
-						name: '业务统计',
-						path: 'maManage',
-						icon: 'desktop',
-						meta: { key: 'bb' },
-						permission: true,
-						children: []
-					}, {
-						name: '数据统计',
-						path: 'admin',
-						icon: 'desktop',
-						meta: { key: 'aa' },
-						permission: true,
-						children: []
-					}
-				]
-			},
-		],
+		menuData: [],
 		tabList: [
 		],
 		tabActivekey: '',
@@ -89,7 +42,7 @@ const app = {
 			context.commit('TOGGLE_SIDERBAR')
 		},
 		GetMenuData: (context: any, menuData: []) => {
-			context.commit('SVAE_MENU', menuData)
+			context.commit('SAVE_MENU', menuData)
 		},
 		AddKeep: async (context: any, name: string[]) => {
 			const { keepList } = context.state
@@ -145,6 +98,7 @@ const app = {
 					})
 					return false
 				}
+				return true
 			})
 			resultData.tabList = tabList
 			context.commit('TAB_CHANGE', resultData)

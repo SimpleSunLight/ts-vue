@@ -7,6 +7,16 @@ export default new Router({
 	mode: 'history',
 	routes: [
 		{
+			path: '/',
+			redirect: '/dashboard'
+		},
+		{
+			path: '/login',
+			name: 'login',
+			meta: { key: 'login' },
+			component: () => import(/* webpackChunkName: "login" */ '@/views/login')
+		},
+		{
 			path: '/total',
 			name: 'total',
 			meta: { key: 'total' },
@@ -16,8 +26,13 @@ export default new Router({
 			component: () => import(/* webpackChunkName: "about" */ '@/views/tree'),
 			children: [
 				{
-					path: 'admin',
-					name: 'admin',
+					path: 'businessTotal',
+					name: '业务统计',
+					component: () => import(/* webpackChunkName: "about" */ '@/views/tree/CustomTree'),
+					meta: { key: 'admin' }
+				}, {
+					path: 'dataTotal',
+					name: '数据统计',
 					component: () => import(/* webpackChunkName: "about" */ '@/views/tree/CustomTree'),
 					meta: { key: 'admin' }
 				}
@@ -34,12 +49,12 @@ export default new Router({
 			children: [
 				{
 					path: 'menuManage',
-					name: 'menuManage',
+					name: '菜单管理',
 					component: () => import(/* webpackChunkName: "about" */ '@/views/form/CustomForm/CustomForm'),
 					meta: { key: 'menuManage' }
 				}, {
 					path: 'userManage',
-					name: 'userManage',
+					name: '用户管理',
 					component: () => import(/* webpackChunkName: "about" */ '@/views/table/CustomTable'),
 					meta: { key: 'userManage' }
 				}

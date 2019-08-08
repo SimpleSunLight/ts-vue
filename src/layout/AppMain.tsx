@@ -38,7 +38,6 @@ class AppMain extends Vue {
 
 	@Emit()
 	public removeTab(name: string) {
-		// console.log(this)
 		this.$store.dispatch('RemoveTab', name)
 	}
 

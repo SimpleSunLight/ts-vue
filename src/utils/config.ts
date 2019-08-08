@@ -10,7 +10,7 @@ const config = {
 	icon: '/favicon.ico',
 	API,
 	openPages: ['/login', '/404', '/401'], // 全屏页面
-	noLoginList: ['#/login']
+	noLoginList: ['/login']
 }
 
 export default config

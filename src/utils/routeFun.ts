@@ -48,10 +48,10 @@ const findMenu = (
 					query
 				})
 				result.tabActiveKey = d.name
+			} else {
+				url.shift()
+				result = findMenu(d.children, url, tabList, tabActiveKey, params, query, key)
 			}
-		} else {
-			url.shift()
-			result = findMenu(d.children, url, tabList, tabActiveKey, params, query, key)
 		}
 	})
 	result.key = key
