@@ -27,7 +27,8 @@ http.interceptors.response.use(
 		if (response.data.code === 0) {
 			return response.data
 		} else {
-			message.error(response.data.err)
+			// message.error(response.data.err)
+			return response.data
 		}
 	}, (err) => {
 		const code = JSON.parse(JSON.stringify(err)).response.status === 404 ? '404' : '网络异常, 请重试'

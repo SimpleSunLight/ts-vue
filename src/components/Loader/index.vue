@@ -9,12 +9,13 @@
 
 <script lang="ts">
 import {
-  Component, Prop, Emit, Vue, Inject, Provide,
+	Component, Prop, Vue, Watch
 } from 'vue-property-decorator'
+
 @Component
 export default class Loader extends Vue {
-  @Prop() private spinning!: boolean;
-  @Prop() private fullScreen!: boolean;
+	@Prop() private spinning!: boolean;
+	@Prop() private fullScreen!: boolean;
 }
 </script>
 

@@ -1,13 +1,13 @@
 import http from '@/utils/http'
 
 const menuData = [
-	// {
-	// 	name: '首页',
-	// 	icon: 'desktop',
-	// 	path: '/dashboard',
-	// 	meta: { key: 'dashboard' },
-	// 	children: []
-	// },
+	{
+		name: '首页',
+		icon: 'desktop',
+		path: '/dashboard',
+		meta: { key: 'dashboard' },
+		children: []
+	},
 	{
 		name: '权限管理',
 		icon: 'desktop',
@@ -75,9 +75,9 @@ const user = {
 	actions: {
 		getUserInfo: (context: any) => new Promise((resolve, reject) => {
 			context.commit('LOADING', false)
-			http.get('/api/getUserInfo').then((res) => {
+			http.get('/api/getUserInfo').then((res: any) => {
 				context.commit('LOADING', true)
-				if (res) {
+				if (!res.code) {
 					const userData = {
 						userid: res.data.id,
 						username: res.data.username

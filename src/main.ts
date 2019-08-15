@@ -19,7 +19,7 @@ router.beforeEach((to, from, next) => {
 	if (!store.state.app.menuData.length && flag) {
 		flag = false
 		store.dispatch('getUserInfo').then(() => {
-			const toPath = config.noLoginList.indexOf(`${to.path}`) > -1 ? '/dashboard' : to.path
+			const toPath = config.noLoginList.indexOf(to.path) > -1 ? '/dashboard' : to.path
 			store.dispatch('AddTabPane', toPath).then(() => {
 				next({
 					path: toPath, query: to.query, params: to.params, replace: true

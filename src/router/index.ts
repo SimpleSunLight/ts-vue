@@ -11,6 +11,12 @@ export default new Router({
 			redirect: '/dashboard'
 		},
 		{
+			path: '/dashboard',
+			name: '首页',
+			meta: { key: 'dashboard' },
+			component: () => import(/* webpackChunkName: "dashboard" */ '@/views/dashboard')
+		},
+		{
 			path: '/login',
 			name: 'login',
 			meta: { key: 'login' },

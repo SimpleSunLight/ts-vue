@@ -21,6 +21,7 @@ import './index.less'
 class Login extends Vue {
 	[x: string]: any;
 
+	public loading: boolean = false
 	public loginForm: {
 		username: string
 		password: string
@@ -36,8 +37,11 @@ class Login extends Vue {
 		this.Form.validateFields((err: any, values: object) => {
 			if (!err) {
 				this.$http.post('/api/login', values).then((data: any) => {
+					this.loading = true
+					this.$store.dispatch('getUserInfo').then(() => {
+						this.$router.push('/')
+					})
 					message.success('登陆成功!')
-					this.$router.push('/')
 				}).catch((error: any) => {
 					throw error
 				})
@@ -87,7 +91,7 @@ class Login extends Vue {
 							)}
 						</a-form-item>
 						<a-form-item>
-							<a-button type='primary' on-click={this.submitForm}>Login</a-button>
+							<a-button type='primary' loading={this.loading} on-click={this.submitForm}>Login</a-button>
 						</a-form-item>
 					</a-form>
 				</div>

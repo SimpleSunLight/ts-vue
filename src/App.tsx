@@ -16,7 +16,7 @@ class App extends Vue {
 		const self = this
 		return (
 			<div id='app'>
-			<loader spin={self.$store.getters.spinning} fullScreen></loader>
+				<loader spinning={self.$store.getters.spinning} fullScreen></loader>
 				<a-locale-provide locale={zh_CN}>
 					<AppMain />
 				</a-locale-provide>
