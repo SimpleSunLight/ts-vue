@@ -264,7 +264,8 @@ export class OriginSimpleForm extends Vue {
 		return this.renderForm()
 	}
 }
-export default Form.create({
+
+const wrappedComponent = Form.create({
 	props: {
 		handleParentSubmit: {
 			type: Function
@@ -295,3 +296,5 @@ export default Form.create({
 		}
 	}
 })(OriginSimpleForm)
+
+export default wrappedComponent

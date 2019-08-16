@@ -165,27 +165,28 @@ class CustomForm extends Vue {
 
 	public render() {
 		const {
-			data,
-			// data1,
-			// visible,
-			// showModal,
+			// data,
+			data1,
+			visible1,
+			showModal,
 			handleSubmit,
 		} = this
 		return (
 			<div>
-				<a-simpleform
+				{/* <a-simpleform
 					layout='vertical'
 					fields={data}
 					handleParentSubmit={handleSubmit}
 					formStyle={{ background: '#fff' }}
-				/>
-				{/* <a-simplemodalform
+				/> */}
+				<a-simplemodalform
 					title='新建菜单'
 					fields={data1}
 					cancel={showModal}
-					visible={visible}
+					visible={visible1}
 					ok={handleSubmit}
-				/> */}
+				/>
+				<button on-click={showModal}>commit</button>
 			</div>
 		)
 	}

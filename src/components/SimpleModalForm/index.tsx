@@ -57,7 +57,7 @@ class SimpleModalForm extends Vue {
 			layout,
 			fields,
 			spanWidth,
-			wrapperComponentRef: this.saveFormRef
+			wrappedComponentRef: this.saveFormRef
 		}
 		return (
 			<a-modal
@@ -71,7 +71,9 @@ class SimpleModalForm extends Vue {
 				cancelText={cancelText}
 				confirmLoading={confirmLoading}
 			>
-				<a-simpleform {...{ props: anotherProps} } />
+				<a-simpleform {...{ props: anotherProps} } wrappedComponentRef={(fromRef: any) => {
+					return this.formRef = fromRef;
+				}} />
 			</a-modal>
 		)
 	}
