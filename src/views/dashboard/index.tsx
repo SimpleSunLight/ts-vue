@@ -31,7 +31,7 @@ export default class Dashboard extends Vue {
 		return (
 			<a-row gutter={{ xs: 8, md: 12, xl: 20 }}>
 				<a-col>
-					<a-card title='首页' loading={this.loading}>aa</a-card>
+					<a-card title='首页' loading={this.loading} style={{ width: 400 }}>aa</a-card>
 				</a-col>
 			</a-row>
 		)

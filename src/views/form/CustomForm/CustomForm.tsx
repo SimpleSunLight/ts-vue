@@ -1,10 +1,12 @@
 import {
 	Component, Vue, Emit
 } from 'vue-property-decorator'
+import { Button } from 'ant-design-vue'
 import SimpleForm from '@/components/SimpleForm'
 import SimpleModalForm from '@/components/SimpleModalForm'
 @Component({
 	components: {
+		'a-button': Button,
 		'a-simpleform': SimpleForm,
 		'a-simplemodalform': SimpleModalForm
 	}
@@ -186,7 +188,7 @@ class CustomForm extends Vue {
 					visible={visible1}
 					ok={handleSubmit}
 				/>
-				<button on-click={showModal}>commit</button>
+				<a-button on-click={showModal}>Add</a-button>
 			</div>
 		)
 	}
